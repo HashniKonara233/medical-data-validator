@@ -2,7 +2,7 @@
 
 A Python-based medical records validation program that checks whether patient records follow the required structure and data constraints.
 
-📌 Project Overview
+## 📌 Project Overview
 
 This project validates a collection of medical records using Python.
 
@@ -17,33 +17,38 @@ The program checks:
 * Whether gender values are valid.
 * Whether medications are stored as a list of strings.
 
-The project uses Python's built-in 're' module for pattern validation.
+The project uses Python's built-in `re` module for pattern validation.
 
-🛠️ Technologies Used
+---
 
-* Python 3
-* Regular Expressions ('re')
-* Lists and Dictionaries
-* Functions
-* Conditional Statements
-* Loops
-* Data Validation
+## 🛠️ Technologies Used
 
-📂 Medical Record Structure
+* **Python 3**
+* **Regular Expressions (`re`)**
+* **Lists and Dictionaries**
+* **Functions**
+* **Conditional Statements**
+* **Loops**
+* **Data Validation**
+
+---
+
+## 📂 Medical Record Structure
 
 Each medical record must contain the following keys:
 
+```text
 patient_id
 age
 gender
 diagnosis
 medications
 last_visit_id
-
+```
 
 Example:
 
-
+```python
 {
     'patient_id': 'P1001',
     'age': 34,
@@ -52,57 +57,70 @@ Example:
     'medications': ['Lisinopril'],
     'last_visit_id': 'V2301'
 }
+```
 
-🔍 Validation Rules
+---
 
-1. Input must be a list or tuple
+## 🔍 Validation Rules
 
-The 'validate()' function first checks whether the supplied data is a list or tuple.
+### 1. Input must be a list or tuple
+
+The `validate()` function first checks whether the supplied data is a list or tuple.
 
 If it is not, the following message is displayed:
 
+```text
 Invalid format: expected a list or tuple.
+```
 
-2. Each record must be a dictionary
+### 2. Each record must be a dictionary
 
 Every item inside the list or tuple must be a dictionary.
 
 If an item is not a dictionary, the program displays:
 
+```text
 Invalid format: expected a dictionary at position <index>.
+```
 
-3. Required keys
+### 3. Required keys
 
 Each dictionary must contain exactly these keys:
 
+```text
 patient_id
 age
 gender
 diagnosis
 medications
 last_visit_id
-
+```
 
 If keys are missing or additional/invalid keys are present, the program displays:
 
+```text
 Invalid format: <dictionary> at position <index> has missing and/or invalid keys.
+```
 
-
-4. Patient ID
+### 4. Patient ID
 
 The patient ID must be a string matching the following pattern:
 
+```text
 P + digits
+```
 
 Examples:
 
+```text
 P1001
 p1002
 P1234
+```
 
 The validation is case-insensitive.
 
-5. Age
+### 5. Age
 
 The age must:
 
@@ -111,56 +129,72 @@ The age must:
 
 Example:
 
+```python
 'age': 34
+```
 
-6. Gender
+### 6. Gender
 
 Gender must be a string containing either:
 
+```text
 Male
 Female
+```
 
 The validation is case-insensitive.
 
-7. Diagnosis
+### 7. Diagnosis
 
-Diagnosis must be a string or 'None'.
+Diagnosis must be a string or `None`.
 
 Examples:
 
+```python
 'diagnosis': 'Hypertension'
+```
 
 or
 
+```python
 'diagnosis': None
+```
 
-8. Medications
+### 8. Medications
 
 Medications must be a list, and every item in the list must be a string.
 
 Example:
 
+```python
 'medications': ['Metformin', 'Insulin']
+```
 
-9. Last Visit ID
+### 9. Last Visit ID
 
 The last visit ID must be a string matching:
 
+```text
 V + digits
+```
 
 Examples:
 
+```text
 V2301
 v2302
 V1234
+```
 
 The validation is case-insensitive.
 
-⚙️ How the Program Works
+---
+
+## ⚙️ How the Program Works
 
 The program contains two main functions.
 
-'find_invalid_records()'
+### `find_invalid_records()`
 
 This function checks individual fields of a medical record against predefined constraints.
 
@@ -168,15 +202,19 @@ It returns a list containing the names of fields that contain invalid values.
 
 Example:
 
+```python
 invalid_records = find_invalid_records(**dictionary)
+```
 
 If an invalid field is found, the program displays:
 
+```text
 Unexpected format '<key>: <value>' at position <index>.
+```
 
-'validate()'
+### `validate()`
 
-The 'validate()' function performs the overall validation.
+The `validate()` function performs the overall validation.
 
 It:
 
@@ -186,32 +224,41 @@ It:
 4. Checks whether the required keys are present.
 5. Checks individual field values.
 6. Prints validation messages when errors are found.
-7. Prints 'Valid format.' when all records pass validation.
+7. Prints `Valid format.` when all records pass validation.
 
+---
 
-▶️ How to Run
+## ▶️ How to Run
 
 Make sure Python 3 is installed.
 
 Save the program as:
 
+```text
 medical_records.py
+```
 
 Then run:
 
+```bash
 python medical_records.py
+```
 
 If all records are valid, the output will be:
 
+```text
 Valid format.
+```
 
-🧪 Testing
+---
+
+# 🧪 Testing
 
 The program can be tested by intentionally introducing invalid data.
 
-Test 1: Add Non-Dictionary Items
+## Test 1: Add Non-Dictionary Items
 
-To test the second conditional statement, add two items of your choice that are **not dictionaries** at the end of the 'medical_records' list.
+To test the second conditional statement, add two items of your choice that are **not dictionaries** at the end of the `medical_records` list.
 
 For example:
 
@@ -232,6 +279,7 @@ Invalid format: expected a dictionary at position 5.
 
 > Restore the original list after testing.
 
+---
 
 ## Test 2: Change `medical_records` to a String
 
@@ -324,3 +372,4 @@ This project demonstrates practical use of:
 **Hashini Konara**
 
 Computer Science Undergraduate
+
